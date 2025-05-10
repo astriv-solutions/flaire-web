@@ -28,9 +28,9 @@ const Header: React.FC = () => {
               alt="Flaire Bird Logo"
               width={48}
               height={48}
-              className="min-w-fit w-10 h-10 object-contain"
+              className="min-w-fit w-10 h-10  object-contain"
             />
-            <span className="manrope text-xl font-semibold text-foreground cursor-pointer">
+            <span className="inter text-xl font-semibold text-foreground cursor-pointer">
               {siteDetails.siteName}
             </span>
           </Link>
