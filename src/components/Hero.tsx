@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
             </motion.span>
           ))}
         </h1>
-        <p className="mt-4 text-foreground max-w-lg mx-auto">{heroDetails.subheading}</p>
+        <p className="mt-4 text-foreground max-w-lg mx-auto shiny-text">{heroDetails.subheading}</p>
         <div className="mt-6 flex flex-col sm:flex-row items-center sm:gap-4 w-fit mx-auto">
           <AppStoreButton dark />
           <PlayStoreButton dark />
