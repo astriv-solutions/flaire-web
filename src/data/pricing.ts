@@ -1,37 +1,41 @@
-import { IPricing } from "@/types";
+import { IPricing } from '@/types';
 
 export const tiers: IPricing[] = [
-    {
-        name: 'Starter',
-        price: 29,
-        features: [
-            'Basic cloud integration',
-            'Up to 5 team members',
-            '20GB storage',
-            'Email support',
-        ],
-    },
-    {
-        name: 'Pro',
-        price: 99,
-        features: [
-            'Advanced cloud integration',
-            'Up to 20 team members',
-            '100GB storage',
-            'Priority email & phone support',
-            'Advanced analytics',
-        ],
-    },
-    {
-        name: 'Enterprise',
-        price: 'Custom',
-        features: [
-            'Full cloud integration',
-            'Unlimited team members',
-            'Unlimited storage',
-            '24/7 dedicated support',
-            'Custom solutions',
-            'On-site training',
-        ],
-    },
-]
+  {
+    name: 'Starter',
+    price: 29,
+    features: [
+      'Limited number of campaigns',
+      'Basic campaign search and filtering',
+      'Core collaboration tools',
+      'Basic analytics dashboards',
+      'Profile page with audience insights',
+      'Email support',
+    ],
+  },
+  {
+    name: 'Pro',
+    price: 99,
+    features: [
+      'More campaigns per month',
+      'Advanced campaigns search',
+      'Enhanced collaboration tools',
+      'In-depth analytics and reporting',
+      'Priority payment processing',
+      'Verified creator badge',
+      'Email + live chat support',
+    ],
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    features: [
+      'Unlimited campaigns',
+      'Unlimited storage',
+      '24/7 dedicated support',
+      'Content editing & creative support',
+      'Advanced security features',
+      'Priority onboarding & support',
+    ],
+  },
+];
