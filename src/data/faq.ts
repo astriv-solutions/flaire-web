@@ -3,7 +3,7 @@ import { siteDetails } from './siteDetails';
 
 export const faqs: IFAQ[] = [
   {
-    question: `How do I join ${siteDetails.siteName} as an influencer??`,
+    question: `How do I join ${siteDetails.siteName} as an influencer?`,
     answer:
       'Simply download the Flaire app, create a profile with your audience details, and start exploring available brand campaigns.',
   },
