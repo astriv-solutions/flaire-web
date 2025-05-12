@@ -38,7 +38,14 @@ const Hero: React.FC = () => {
             </motion.span>
           ))}
         </h1>
-        <p className="mt-4 text-foreground max-w-lg mx-auto shiny-text">{heroDetails.subheading}</p>
+        <motion.p
+          initial={{ filter: 'blur(8px)', opacity: 0 }}
+          animate={{ filter: 'blur(0px)', opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
+          className="mt-4 text-foreground max-w-lg mx-auto shiny-text"
+        >
+          {heroDetails.subheading}
+        </motion.p>
         <div className="mt-6 flex flex-col sm:flex-row items-center sm:gap-4 w-fit mx-auto">
           <AppStoreButton dark />
           <PlayStoreButton dark />
