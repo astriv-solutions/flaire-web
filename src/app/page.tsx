@@ -1,19 +1,26 @@
-import Hero from "@/components/Hero";
-import Testimonials from "@/components/Testimonials";
-import Pricing from "@/components/Pricing/Pricing";
-import FAQ from "@/components/FAQ";
-import Logos from "@/components/Logos";
-import Benefits from "@/components/Benefits/Benefits";
-import Container from "@/components/Container";
-import Section from "@/components/Section";
-import Stats from "@/components/Stats";
-import CTA from "@/components/CTA";
+'use client';
+import Hero from '@/components/Hero';
+import Testimonials from '@/components/Testimonials';
+import Pricing from '@/components/Pricing/Pricing';
+import FAQ from '@/components/FAQ';
+import Logos from '@/components/Logos';
+import Benefits from '@/components/Benefits/Benefits';
+import Container from '@/components/Container';
+import Section from '@/components/Section';
+import Stats from '@/components/Stats';
+import CTA from '@/components/CTA';
+import FlowingMenu from '@/components/FlowingMenu/FlowingMenu';
+import { flowmenuitems } from '@/data/flowmenu';
+
 
 const HomePage: React.FC = () => {
   return (
     <>
       <Hero />
       <Logos />
+      <div style={{ height: '400px', position: 'relative' }}>
+        <FlowingMenu items={flowmenuitems} />
+      </div>
       <Container>
         <Benefits />
 
@@ -36,7 +43,7 @@ const HomePage: React.FC = () => {
         <FAQ />
 
         <Stats />
-        
+
         <CTA />
       </Container>
     </>
