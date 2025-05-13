@@ -19,13 +19,13 @@ const Hero: React.FC = () => {
       className="relative flex items-center justify-center pb-0 pt-16 md:pt-20 px-5"
     >
       <div className="absolute left-0 top-0 bottom-0 -z-10 w-full">
-        <div className="absolute inset-0 h-full w-full bg-hero-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]"></div>
+        <div className="absolute inset-0 h-full w-full bg-hero-background bg-[linear-gradient(to_right,#80808030_1px,transparent_1px),linear-gradient(to_bottom,#80808030_1px,transparent_1px)] bg-[size:55px_55px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]"></div>
       </div>
 
       <div className="absolute left-0 right-0 bottom-0 backdrop-blur-[2px] h-40 bg-gradient-to-b from-transparent via-[rgba(233,238,255,0.5)] to-[rgba(202,208,230,0.5)]"></div>
 
       <div className="text-center">
-        <h1 className="font-funnel text-4xl md:text-6xl md:leading-tight font-bold text-foreground max-w-lg md:max-w-2xl mx-auto flex flex-col items-center">
+        <h1 className="font-funnel text-4xl md:text-7xl md:leading-tight font-bold text-foreground max-w-lg md:max-w-4xl mx-auto flex flex-col items-center">
           {getHeadingLines(heroDetails.heading).map((line, i) => (
             <motion.span
               key={i}
@@ -57,7 +57,6 @@ const Hero: React.FC = () => {
           quality={100}
           sizes="(max-width: 768px) 100vw, 384px"
           priority={true}
-          unoptimized={true}
           alt="app mockup"
           className="relative mt-12 md:mt-16 mx-auto z-10"
         />
