@@ -57,3 +57,28 @@ h6 {
 .benefit-section:last-of-type > div {
   @apply mb-10;
 }
+
+/* Shiny text effect from https://www.reactbits.dev/text-animations/shiny-text */
+.shiny-text {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    #171717 40%,
+    rgb(165, 165, 165) 48%,
+    rgb(165, 165, 165) 52%,
+    #171717 60%
+  );
+  background-size: 200% auto;
+  color: #171717;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}

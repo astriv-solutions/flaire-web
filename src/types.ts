@@ -38,6 +38,7 @@ export interface IStats {
   title: string;
   icon: JSX.Element;
   description: string;
+  number: number;
 }
 
 export interface ISocials {
@@ -49,6 +50,5 @@ export interface ISocials {
   twitter?: string;
   youtube?: string;
   x?: string;
-  tiktok?: string;
   [key: string]: string | undefined;
 }
