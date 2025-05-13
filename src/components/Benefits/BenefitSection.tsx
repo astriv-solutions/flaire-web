@@ -52,7 +52,7 @@ const BenefitSection: React.FC<Props> = ({ benefit, imageAtRight }: Props) => {
   return (
     <section className="benefit-section">
       <motion.div
-        className="flex flex-wrap flex-col items-center justify-center gap-2 lg:flex-row lg:gap-20 lg:flex-nowrap mb-24"
+        className="flex flex-wrap flex-col items-center justify-center gap-2 lg:flex-row lg:gap-48 lg:flex-nowrap mb-24"
         variants={containerVariants}
         initial="offscreen"
         whileInView="onscreen"
@@ -64,7 +64,7 @@ const BenefitSection: React.FC<Props> = ({ benefit, imageAtRight }: Props) => {
             'lg:order-1 justify-end': !imageAtRight,
           })}
         >
-          <div className="w-full  text-center lg:text-left ">
+          <div className="w-full  text-center lg:text-left">
             <motion.div className="flex flex-col w-full" variants={childVariants}>
               <SectionTitle>
                 <h3 className="lg:max-w-2xl">{title}</h3>
