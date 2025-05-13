@@ -1231,7 +1231,6 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
             className={`
           select-none
           absolute
-          max-w-[10ch]
           sm:max-w-[20ch] max-w-[80vw]
           text-[1.2rem]
           sm:top-1/2 top-[6rem]
