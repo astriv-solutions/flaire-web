@@ -14,7 +14,7 @@ const PricingColumn: React.FC<Props> = ({ tier, highlight }: Props) => {
   return (
     <PixelCard
       variant="orange"
-      className="w-full max-w-md mx-auto lg:max-w-xl lg:h-[550px] lg:w-[400px] shadow-xl"
+      className="w-full max-w-md mx-auto lg:max-w-xl lg:h-[550px] lg:w-[350px] shadow-xl"
     >
       <div className="absolute inset-0 flex flex-col">
         <div className="p-6 rounded-t-xl">

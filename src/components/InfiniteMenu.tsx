@@ -1202,19 +1202,20 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
       {activeItem && (
         <>
           {/* Title */}
-          <h2
+          <h3
             className={`
           select-none
           absolute
           font-black
-          [font-size:4rem]
-          left-[1.6em]
+          [font-size:3rem]
+          left-[3.6em]
           top-1/2
           transform
           translate-x-[20%]
           -translate-y-1/2
           transition-all
           ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
+          hidden sm:block
           ${
             isMoving
               ? 'opacity-0 pointer-events-none duration-[100ms]'
@@ -1223,23 +1224,25 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
         `}
           >
             {activeItem.title}
-          </h2>
+          </h3>
 
           {/* Description */}
           <p
             className={`
           select-none
           absolute
-          max-w-[10ch]
-          text-[1.5rem]
-          top-1/2
-          right-[1%]
+          sm:max-w-[20ch] max-w-[80vw]
+          text-[1.2rem]
+          sm:top-1/2 top-[6rem]
+          sm:right-[1%] right-[-8rem]
+          sm:text-right text-center
+          -translate-x-1/2
           transition-all
           ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
           ${
             isMoving
-              ? 'opacity-0 pointer-events-none duration-[100ms] translate-x-[-60%] -translate-y-1/2'
-              : 'opacity-100 pointer-events-auto duration-[500ms] translate-x-[-90%] -translate-y-1/2'
+              ? 'opacity-0 pointer-events-none duration-[100ms] sm:translate-x-[-60%] -translate-y-1/2'
+              : 'opacity-100 pointer-events-auto duration-[500ms] sm:translate-x-[-90%] -translate-y-1/2'
           }
         `}
           >
@@ -1257,7 +1260,7 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
           h-[60px]
           grid
           place-items-center
-          bg-[#00ffff]
+          bg-primary
           border-[5px]
           border-black
           rounded-full
