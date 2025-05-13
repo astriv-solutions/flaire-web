@@ -1,37 +1,36 @@
-import { IMenuItem, ISocials } from "@/types";
+import { IMenuItem, ISocials } from '@/types';
 
 export const footerDetails: {
-    subheading: string;
-    quickLinks: IMenuItem[];
-    email: string;
-    telephone: string;
-    socials: ISocials;
+  subheading: string;
+  quickLinks: IMenuItem[];
+  email: string;
+  telephone: string;
+  socials: ISocials;
 } = {
-    subheading: "Empowering businesses with cutting-edge financial technology solutions.",
-    quickLinks: [
-        {
-            text: "Features",
-            url: "#features"
-        },
-        {
-            text: "Pricing",
-            url: "#pricing"
-        },
-        {
-            text: "Testimonials",
-            url: "#testimonials"
-        }
-    ],
-    email: 'address@yoursite.com',
-    telephone: '+1 (123) 456-7890',
-    socials: {
-        // github: 'https://github.com',
-        // x: 'https://twitter.com/x',
-        twitter: 'https://twitter.com/Twitter',
-        facebook: 'https://facebook.com',
-        // youtube: 'https://youtube.com',
-        linkedin: 'https://www.linkedin.com',
-        // threads: 'https://www.threads.net',
-        instagram: 'https://www.instagram.com',
-    }
-}
+  subheading: "Empowering Sri Lanka's creators and brands to grow together.",
+  quickLinks: [
+    {
+      text: 'Features',
+      url: '#features',
+    },
+    {
+      text: 'Pricing',
+      url: '#pricing',
+    },
+    {
+      text: 'Testimonials',
+      url: '#testimonials',
+    },
+  ],
+  email: 'flaire@astrivsolutions.com',
+  telephone: '+1 (123) 456-7890',
+  socials: {
+    x: 'https://twitter.com/x',
+    facebook: 'https://facebook.com',
+    youtube: 'https://www.youtube.com/@flaireapp',
+    linkedin: 'https://www.linkedin.com/company/astriv-solutions',
+    instagram: 'https://www.instagram.com/flaireapp.co/',
+    tiktok: 'https://www.tiktok.com/@flaireapp.co',
+    reddit: 'https://www.reddit.com/user/flaire_app/',
+  },
+};
