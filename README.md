@@ -2,7 +2,7 @@
   <img src="public\images\Flaire_bird.png" alt="Profile Views" />
 </p>
 
-#Flaire
+# Flaire
 ---
 ### Create. Flaunt. Flaire.
 
