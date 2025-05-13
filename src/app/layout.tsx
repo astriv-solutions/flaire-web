@@ -8,6 +8,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { siteDetails } from '@/data/siteDetails';
+import CursorDot from '@/components/CursorDot';
 
 import './globals.css';
 
@@ -54,6 +55,7 @@ export default function RootLayout({
           <SpeedInsights /> {/* Vercel Speed Insights */}
         </main>
         <Footer />
+        <CursorDot />
       </body>
     </html>
   );
