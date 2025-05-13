@@ -1,5 +1,6 @@
 export const heroDetails = {
-    heading: 'Smart, Secure, Simple\nFinancial Management',
-    subheading: 'From effortless budgeting to real-time investment insights, Finwise puts you in control of your money like never before',
-    centerImageSrc: '/images/hero-mockup.webp',
-}
+  heading: 'Smart, Secure, Simple Campaign Management',
+  subheading:
+    'Flaire connects local brands with top creators for impactful campaigns, all in one seamless platform.',
+  centerImageSrc: '/images/hero-mockup.webp',
+};

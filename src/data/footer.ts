@@ -23,7 +23,7 @@ export const footerDetails: {
     },
   ],
   email: 'flaire@astrivsolutions.com',
-  telephone: '+1 (123) 456-7890',
+  telephone: '+94 777 677 211',
   socials: {
     x: 'https://twitter.com/x',
     facebook: 'https://facebook.com',
