@@ -9,8 +9,8 @@ import Container from '@/components/Container';
 import Section from '@/components/Section';
 import Stats from '@/components/Stats';
 import CTA from '@/components/CTA';
-import FlowingMenu from '@/components/FlowingMenu/FlowingMenu';
-import { flowmenuitems } from '@/data/flowmenu';
+import FlowingMenu from '@/components/FlowingMenu';
+import { flowingmenuitems } from '@/data/flowingmenu';
 
 
 const HomePage: React.FC = () => {
@@ -18,9 +18,10 @@ const HomePage: React.FC = () => {
     <>
       <Hero />
       <Logos />
-      <div style={{ height: '400px', position: 'relative' }}>
-        <FlowingMenu items={flowmenuitems} />
+      <div style={{ height: '450px', position: 'relative', paddingBottom: '50px'}}>
+        <FlowingMenu items={flowingmenuitems} />
       </div>
+
       <Container>
         <Benefits />
 

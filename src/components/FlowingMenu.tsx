@@ -75,7 +75,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
   };
 
   const repeatedMarqueeContent = React.useMemo(() => {
-    return Array.from({ length: 4 }).map((_, idx) => (
+    return Array.from({ length: 10 }).map((_, idx) => (
       <React.Fragment key={idx}>
         <span className="text-[#060606] uppercase font-normal text-[4vh] leading-[1.2] p-[1vh_1vw_0]">
           {text}
@@ -94,7 +94,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
       ref={itemRef}
     >
       <a
-        className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-white text-[4vh] hover:text-[#060606] focus:text-white focus-visible:text-[#060606]"
+        className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-black text-[4vh] hover:text-white focus:text-white focus-visible:text-[#060606]"
         href={link}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
