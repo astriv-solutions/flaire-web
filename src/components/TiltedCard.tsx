@@ -28,7 +28,7 @@ export default function TiltedCard({
   imageSrc,
   altText = 'Tilted card image',
   captionText = '',
-  containerHeight = '600px',
+  containerHeight = '650px',
   containerWidth = '100%',
   imageHeight = '600px',
   imageWidth = '300px',
@@ -100,11 +100,11 @@ export default function TiltedCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {showMobileWarning && (
+      {/* {showMobileWarning && (
         <div className="absolute top-4 text-center text-sm block sm:hidden">
           This effect is not optimized for mobile. Check on desktop.
         </div>
-      )}
+      )} */}
 
       <motion.div
         className="relative [transform-style:preserve-3d]"
