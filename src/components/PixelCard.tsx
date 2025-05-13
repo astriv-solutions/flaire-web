@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 class Pixel {
   width: number;
@@ -183,9 +183,7 @@ export default function PixelCard({
   const pixelsRef = useRef<Pixel[]>([]);
   const animationRef = useRef<number | null>(null);
   const timePreviousRef = useRef(performance.now());
-  const reducedMotion = useRef(
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  ).current;
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   const variantCfg: VariantConfig = VARIANTS[variant] || VARIANTS.default;
   const finalGap = gap ?? variantCfg.gap;
@@ -295,6 +293,12 @@ export default function PixelCard({
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [finalGap, finalSpeed, finalColors, finalNoFocus]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    }
+  }, []);
 
   return (
     <div
