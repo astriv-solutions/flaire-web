@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public\images\Flaire_bird.png" alt="Profile Views" />
+  <img src="public/images/Flaire_bird.png" alt="Profile Views" />
 </p>
 
 # Flaire
