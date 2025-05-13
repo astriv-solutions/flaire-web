@@ -9,6 +9,8 @@ import PlayStoreButton from './PlayStoreButton';
 
 import { heroDetails } from '@/data/hero';
 
+import Magnet from './Magnet';
+
 // Helper: split heading into lines (supporting \n for multi-line headings)
 const getHeadingLines = (heading: string) => heading.split(/\r?\n/);
 
@@ -47,8 +49,12 @@ const Hero: React.FC = () => {
           {heroDetails.subheading}
         </motion.p>
         <div className="mt-6 flex flex-col sm:flex-row items-center sm:gap-4 w-fit mx-auto">
-          <AppStoreButton dark />
-          <PlayStoreButton dark />
+          <Magnet padding={500} disabled={false} magnetStrength={30}>
+            <AppStoreButton dark />
+          </Magnet>
+          <Magnet padding={500} disabled={false} magnetStrength={30}>
+            <PlayStoreButton dark />
+          </Magnet>
         </div>
         <Image
           src={heroDetails.centerImageSrc}
