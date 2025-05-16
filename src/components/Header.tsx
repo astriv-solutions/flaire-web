@@ -11,7 +11,10 @@ import { siteDetails } from '@/data/siteDetails';
 import { menuItems } from '@/data/menuItems';
 import Image from 'next/image';
 
-const iconMap: Record<string, React.ReactNode> = {
+// Define a stricter type for iconMap keys
+export type IconKey = 'MdStar' | 'MdAttachMoney' | 'MdPeople';
+
+const iconMap: Record<IconKey, React.ReactNode> = {
   MdStar: <MdStar size={24} />,
   MdAttachMoney: <MdAttachMoney size={24} />,
   MdPeople: <MdPeople size={24} />,
@@ -51,7 +54,8 @@ const HeaderMenuItems: React.FC<HeaderMenuItemsProps> = ({
           >
             {isFloating ? (
               <>
-                {item.icon && iconMap[item.icon]}
+                {/* Cast item.icon to IconKey for type safety */}
+                {item.icon && iconMap[item.icon as IconKey]}
                 <span
                   className={`ml-2 transition-all duration-200 ${
                     showText ? 'opacity-100 w-auto' : 'opacity-0 w-0 overflow-hidden'
