@@ -19,6 +19,63 @@ const iconMap: Record<string, React.ReactNode> = {
 
 const sectionIds = ['features', 'pricing', 'testimonials'];
 
+// Extracted menu items rendering logic
+interface HeaderMenuItemsProps {
+  isFloating: boolean;
+  activeSection: string | null;
+  onItemClick?: () => void;
+  className?: string;
+  ctaText?: string;
+  ctaClassName?: string;
+}
+
+const HeaderMenuItems: React.FC<HeaderMenuItemsProps> = ({
+  isFloating,
+  activeSection,
+  onItemClick,
+  className = '',
+  ctaText = 'Download',
+  ctaClassName = 'text-black bg-primary hover:bg-primary-accent px-8 py-3 rounded-full transition-colors',
+}) => (
+  <ul className={className}>
+    {menuItems.map((item) => {
+      const showText = activeSection === item.url.replace('#', '');
+      return (
+        <li key={item.text} className="relative flex items-center">
+          <Link
+            href={item.url}
+            className={`flex items-center gap-2 text-foreground hover:text-foreground-accent transition-colors px-2 py-1 rounded-full inter font-semibold text-base ${
+              showText ? 'bg-primary/10 font-bold' : ''
+            }`}
+            onClick={onItemClick}
+          >
+            {isFloating ? (
+              <>
+                {item.icon && iconMap[item.icon]}
+                <span
+                  className={`ml-2 transition-all duration-200 ${
+                    showText ? 'opacity-100 w-auto' : 'opacity-0 w-0 overflow-hidden'
+                  } inter font-semibold text-base`}
+                  style={{ maxWidth: showText ? 120 : 0 }}
+                >
+                  {item.text}
+                </span>
+              </>
+            ) : (
+              <span className="inter font-semibold text-base">{item.text}</span>
+            )}
+          </Link>
+        </li>
+      );
+    })}
+    <li>
+      <Link href="#cta" className={ctaClassName} onClick={onItemClick}>
+        {ctaText}
+      </Link>
+    </li>
+  </ul>
+);
+
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isFloating, setIsFloating] = useState(false);
@@ -95,45 +152,13 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <ul className="hidden md:flex space-x-6 items-center">
-            {menuItems.map((item) => {
-              const showText = activeSection === item.url.replace('#', '');
-              return (
-                <li key={item.text} className="relative flex items-center">
-                  <Link
-                    href={item.url}
-                    className={`flex items-center gap-2 text-foreground hover:text-foreground-accent transition-colors px-2 py-1 rounded-full inter font-semibold text-base ${
-                      showText ? 'bg-primary/10 font-bold' : ''
-                    }`}
-                  >
-                    {isFloating ? (
-                      <>
-                        {item.icon && iconMap[item.icon]}
-                        <span
-                          className={`ml-2 transition-all duration-200 ${
-                            showText ? 'opacity-100 w-auto' : 'opacity-0 w-0 overflow-hidden'
-                          } inter font-semibold text-base`}
-                          style={{ maxWidth: showText ? 120 : 0 }}
-                        >
-                          {item.text}
-                        </span>
-                      </>
-                    ) : (
-                      <span className="inter font-semibold text-base">{item.text}</span>
-                    )}
-                  </Link>
-                </li>
-              );
-            })}
-            <li>
-              <Link
-                href="#cta"
-                className="text-black bg-primary hover:bg-primary-accent px-8 py-3 rounded-full transition-colors"
-              >
-                Download
-              </Link>
-            </li>
-          </ul>
+          <HeaderMenuItems
+            isFloating={isFloating}
+            activeSection={activeSection}
+            className="hidden md:flex space-x-6 items-center"
+            ctaText="Download"
+            ctaClassName="text-black bg-primary hover:bg-primary-accent px-8 py-3 rounded-full transition-colors"
+          />
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
@@ -166,45 +191,14 @@ const Header: React.FC = () => {
         leaveTo="opacity-0 scale-95"
       >
         <div id="mobile-menu" className="md:hidden bg-white shadow-lg">
-          <ul className="flex flex-col space-y-4 pt-1 pb-6 px-6">
-            {menuItems.map((item) => {
-              const showText = activeSection === item.url.replace('#', '');
-              return (
-                <li key={item.text}>
-                  <Link
-                    href={item.url}
-                    className="flex items-center gap-2 text-foreground hover:text-primary block px-2 py-2 rounded-full inter font-semibold text-base"
-                    onClick={toggleMenu}
-                  >
-                    {isFloating ? (
-                      <>
-                        {item.icon && iconMap[item.icon]}
-                        <span
-                          className={`ml-2 transition-all duration-200 ${
-                            showText ? 'opacity-100 w-auto' : 'opacity-0 w-0 overflow-hidden'
-                          } inter font-semibold text-base`}
-                          style={{ maxWidth: showText ? 120 : 0 }}
-                        >
-                          {item.text}
-                        </span>
-                      </>
-                    ) : (
-                      <span className="inter font-semibold text-base">{item.text}</span>
-                    )}
-                  </Link>
-                </li>
-              );
-            })}
-            <li>
-              <Link
-                href="#cta"
-                className="text-black bg-primary hover:bg-primary-accent px-5 py-2 rounded-full block w-fit"
-                onClick={toggleMenu}
-              >
-                Get Started
-              </Link>
-            </li>
-          </ul>
+          <HeaderMenuItems
+            isFloating={isFloating}
+            activeSection={activeSection}
+            onItemClick={toggleMenu}
+            className="flex flex-col space-y-4 pt-1 pb-6 px-6"
+            ctaText="Get Started"
+            ctaClassName="text-black bg-primary hover:bg-primary-accent px-5 py-2 rounded-full block w-fit"
+          />
         </div>
       </Transition>
     </header>
