@@ -2,6 +2,7 @@ import { ctaDetails } from '@/data/cta';
 
 import AppStoreButton from './AppStoreButton';
 import PlayStoreButton from './PlayStoreButton';
+import Magnet from './Magnet';
 
 const CTA: React.FC = () => {
   return (
@@ -19,9 +20,13 @@ const CTA: React.FC = () => {
 
             <p className="mx-auto max-w-xl md:px-5">{ctaDetails.subheading}</p>
 
-            <div className="mt-4 flex flex-col sm:flex-row items-center sm:gap-4">
-              <AppStoreButton />
-              <PlayStoreButton />
+            <div className="mt-6 flex flex-col sm:flex-row items-center sm:gap-4 w-fit mx-auto">
+              <Magnet padding={500} disabled={false} magnetStrength={30}>
+                <AppStoreButton dark />
+              </Magnet>
+              <Magnet padding={500} disabled={false} magnetStrength={30}>
+                <PlayStoreButton dark />
+              </Magnet>
             </div>
           </div>
         </div>
