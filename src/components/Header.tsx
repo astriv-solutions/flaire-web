@@ -1,52 +1,130 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Transition } from '@headlessui/react';
 import { HiOutlineXMark, HiBars3 } from 'react-icons/hi2';
+import { MdStar, MdAttachMoney, MdPeople } from 'react-icons/md';
 
 import Container from './Container';
 import { siteDetails } from '@/data/siteDetails';
 import { menuItems } from '@/data/menuItems';
 import Image from 'next/image';
 
+const iconMap: Record<string, React.ReactNode> = {
+  MdStar: <MdStar size={24} />,
+  MdAttachMoney: <MdAttachMoney size={24} />,
+  MdPeople: <MdPeople size={24} />,
+};
+
+const sectionIds = ['features', 'pricing', 'testimonials'];
+
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isFloating, setIsFloating] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const headerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const hero = document.getElementById('hero');
+      const scrollY = window.scrollY;
+      if (hero) {
+        const heroBottom = hero.offsetTop + hero.offsetHeight;
+        setIsFloating(scrollY > heroBottom - 80); // 80px buffer for header height
+      }
+      // Section in view logic
+      let foundSection: string | null = null;
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom > 100) {
+            foundSection = id;
+            break;
+          }
+        }
+      }
+      setActiveSection(foundSection);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <header className="sticky top-0 left-0 right-0 z-50 w-full backdrop-blur-md bg-white/60 border-b border-white/30 shadow-sm">
+    <header
+      ref={headerRef}
+      className={`sticky top-0 left-0 right-0 z-50 w-full backdrop-blur-md border-b border-white/30 shadow-sm transition-all duration-300
+        ${
+          isFloating
+            ? 'bg-white/90 shadow-lg pt-2 pb-3 md:py-5 rounded-2xl mx-2 md:mx-auto mt-6 max-w-3xl border border-gray-200'
+            : 'bg-white/60 shadow-sm pt-2 pb-2 md:py-3 rounded-none mx-0 mt-0 max-w-full border-none'
+        }
+      `}
+      style={{
+        position: 'sticky',
+        top: 0,
+        transform: isFloating ? 'translateY(15px)' : 'translateY(0)',
+        transition: 'all 0.3s cubic-bezier(.4,0,.2,1)',
+      }}
+    >
       <Container className="!px-0">
-        <nav className="mx-auto flex justify-between items-center py-1 px-5 md:py-4 bg-transparent">
+        <nav className="mx-auto flex justify-between items-center px-5 bg-transparent">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/images/Flaire_bird.png"
               alt="Flaire Bird Logo"
-              width={48}
-              height={48}
-              className="min-w-fit w-10 h-10  object-contain"
+              width={isFloating ? 36 : 48}
+              height={isFloating ? 36 : 48}
+              className="min-w-fit object-contain transition-all duration-300"
+              style={{ width: isFloating ? 36 : 48, height: isFloating ? 36 : 48 }}
             />
-            <span className="inter text-xl font-semibold text-foreground cursor-pointer">
+            <span
+              className={`inter font-semibold text-foreground cursor-pointer transition-all duration-300 ${
+                isFloating ? 'text-lg' : 'text-xl'
+              }`}
+            >
               {siteDetails.siteName}
             </span>
           </Link>
 
           {/* Desktop Menu */}
-          <ul className="hidden md:flex space-x-6">
-            {menuItems.map((item) => (
-              <li key={item.text}>
-                <Link
-                  href={item.url}
-                  className="text-foreground hover:text-foreground-accent transition-colors"
-                >
-                  {item.text}
-                </Link>
-              </li>
-            ))}
+          <ul className="hidden md:flex space-x-6 items-center">
+            {menuItems.map((item) => {
+              const showText = activeSection === item.url.replace('#', '');
+              return (
+                <li key={item.text} className="relative flex items-center">
+                  <Link
+                    href={item.url}
+                    className={`flex items-center gap-2 text-foreground hover:text-foreground-accent transition-colors px-2 py-1 rounded-full inter font-semibold text-base ${
+                      showText ? 'bg-primary/10 font-bold' : ''
+                    }`}
+                  >
+                    {isFloating ? (
+                      <>
+                        {item.icon && iconMap[item.icon]}
+                        <span
+                          className={`ml-2 transition-all duration-200 ${
+                            showText ? 'opacity-100 w-auto' : 'opacity-0 w-0 overflow-hidden'
+                          } inter font-semibold text-base`}
+                          style={{ maxWidth: showText ? 120 : 0 }}
+                        >
+                          {item.text}
+                        </span>
+                      </>
+                    ) : (
+                      <span className="inter font-semibold text-base">{item.text}</span>
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
             <li>
               <Link
                 href="#cta"
@@ -89,17 +167,34 @@ const Header: React.FC = () => {
       >
         <div id="mobile-menu" className="md:hidden bg-white shadow-lg">
           <ul className="flex flex-col space-y-4 pt-1 pb-6 px-6">
-            {menuItems.map((item) => (
-              <li key={item.text}>
-                <Link
-                  href={item.url}
-                  className="text-foreground hover:text-primary block"
-                  onClick={toggleMenu}
-                >
-                  {item.text}
-                </Link>
-              </li>
-            ))}
+            {menuItems.map((item) => {
+              const showText = activeSection === item.url.replace('#', '');
+              return (
+                <li key={item.text}>
+                  <Link
+                    href={item.url}
+                    className="flex items-center gap-2 text-foreground hover:text-primary block px-2 py-2 rounded-full inter font-semibold text-base"
+                    onClick={toggleMenu}
+                  >
+                    {isFloating ? (
+                      <>
+                        {item.icon && iconMap[item.icon]}
+                        <span
+                          className={`ml-2 transition-all duration-200 ${
+                            showText ? 'opacity-100 w-auto' : 'opacity-0 w-0 overflow-hidden'
+                          } inter font-semibold text-base`}
+                          style={{ maxWidth: showText ? 120 : 0 }}
+                        >
+                          {item.text}
+                        </span>
+                      </>
+                    ) : (
+                      <span className="inter font-semibold text-base">{item.text}</span>
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
             <li>
               <Link
                 href="#cta"
