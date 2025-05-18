@@ -4,12 +4,13 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-import AppStoreButton from './AppStoreButton';
-import PlayStoreButton from './PlayStoreButton';
+// import AppStoreButton from './AppStoreButton';
+// import PlayStoreButton from './PlayStoreButton';
 
 import { heroDetails } from '@/data/hero';
 
 import Magnet from './Magnet';
+import StarBorder from './StarBorder';
 
 // Helper: split heading into lines (supporting \n for multi-line headings)
 const getHeadingLines = (heading: string) => heading.split(/\r?\n/);
@@ -50,12 +51,16 @@ const Hero: React.FC = () => {
         </motion.p>
         <div className="mt-6 flex flex-col sm:flex-row items-center sm:gap-4 w-fit mx-auto">
           <Magnet padding={500} disabled={false} magnetStrength={30}>
-            <AppStoreButton dark />
+            {/* <AppStoreButton dark /> */}
+            <StarBorder as="button" className="custom-class" color="orange" speed="5s">
+              Coming soon!
+            </StarBorder>
           </Magnet>
-          <Magnet padding={500} disabled={false} magnetStrength={30}>
+          {/* <Magnet padding={500} disabled={false} magnetStrength={30}>
             <PlayStoreButton dark />
-          </Magnet>
+          </Magnet> */}
         </div>
+
         <Image
           src={heroDetails.centerImageSrc}
           width={384}
