@@ -34,14 +34,14 @@ const HomePage: React.FC = () => {
           <Pricing />
         </Section>
 
-        <Section id="testimonials" title="Testimonials" description="What out clients say.">
+        {/* <Section id="testimonials" title="Testimonials" description="What out clients say.">
           <div
             className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]"
             style={{ height: '600px' }}
           >
             <InfiniteMenu items={testimonials} />
           </div>
-        </Section>
+        </Section> */}
 
         <FAQ />
 
